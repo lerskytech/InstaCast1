@@ -1,0 +1,128 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem;
+  text-align: center;
+  justify-content: space-between;
+  max-width: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.action-button {
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.host-button {
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  color: white;
+}
+
+.guest-button {
+  background-color: white;
+  color: #16213e;
+}
+
+footer {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.help-button {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.help-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.help-content {
+  color: #333;
+}
+
+.help-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.help-content h4 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #4776e6;
+}
+
+.help-content ol {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.help-content li {
+  margin-bottom: 8px;
+}
+
+.help-content p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Mobile-first responsive design */
+@media (min-width: 768px) {
+  .action-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .action-button {
+    flex: 1;
+    max-width: 250px;
+  }
+}

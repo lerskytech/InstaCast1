@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  
+[build.environment]
+  NODE_VERSION = "16"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
+[dev]
+  command = "npm start"
+  port = 3000
+  framework = "create-react-app"

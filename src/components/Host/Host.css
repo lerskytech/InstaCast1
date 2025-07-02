@@ -1,0 +1,376 @@
+.host-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem;
+  max-width: 100%;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #fff;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #fff;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.connection-status {
+  font-size: 0.9rem;
+}
+
+.status-connected {
+  color: #4caf50;
+}
+
+.status-connecting {
+  color: #ff9800;
+}
+
+.status-disconnected {
+  color: #f44336;
+}
+
+.error-message {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.host-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.video-preview {
+  position: relative;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.video-preview video {
+  width: 100%;
+  max-height: 30vh;
+  background-color: #333;
+  object-fit: cover;
+}
+
+.audio-level-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.audio-level-bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.1s ease;
+}
+
+.mute-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.mute-button.muted {
+  background-color: #f44336;
+}
+
+.guests-section {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.guests-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.guests-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.share-button {
+  background: linear-gradient(90deg, #4776e6, #8e54e9);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.no-guests {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.guests-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guest-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.guest-item.disconnected {
+  opacity: 0.6;
+}
+
+.guest-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-id {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.guest-status {
+  font-size: 0.8rem;
+}
+
+.guest-status.connected {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.guest-status.disconnected {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.guest-mute-button {
+  padding: 0.4rem 0.75rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.guest-mute-button.muted {
+  background-color: #f44336;
+  color: white;
+}
+
+.guest-mute-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recording-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-top: auto;
+  padding: 1rem;
+}
+
+.record-options {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.record-type-toggle {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+  transition: background-color 0.2s;
+}
+
+.record-type-toggle:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.record-type-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f44336;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.recording-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4caf50;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.recording-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #f44336;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.download-button {
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-left: 12px;
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.record-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  flex: 1;
+  transition: background-color 0.2s;
+}
+
+.record-button.recording {
+  background-color: #b71c1c;
+}
+
+.session-sharing {
+  text-align: center;
+}
+
+.session-instructions {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.session-instructions ol {
+  padding-left: 20px;
+}
+
+.session-instructions li {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .host-content {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .video-preview {
+    flex: 1;
+    height: 100%;
+  }
+  
+  .guests-section {
+    flex: 1;
+  }
+  
+  .record-options {
+    flex-direction: row;
+  }
+}

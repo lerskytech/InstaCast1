@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Instacast - Peer-to-Peer Podcast Recording App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Instacast is a cross-platform, peer-to-peer podcast recording application built with React. The app allows podcast hosts to record high-quality audio from multiple guests connected over a local network without the need for server infrastructure.
 
-## Available Scripts
+## Features
+
+### For Hosts
+- One-click setup to start a podcast session
+- Camera and microphone integration
+- Real-time view of connected guests
+- Ability to mute/unmute any participant
+- Session recording with downloadable audio files
+- Central mixing of all audio streams
+
+### For Guests
+- Simple interface to join a host's session
+- Microphone integration with audio level indicators
+- Mute/unmute capabilities
+- Connection status monitoring
+
+## Technology Stack
+
+- **React**: UI framework
+- **React Router**: Navigation and routing
+- **PeerJS**: WebRTC peer-to-peer communication wrapper
+- **Browser APIs**: MediaDevices, MediaStream, MediaRecorder
+
+## Getting Started
 
 In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Important Notes
 
-### `npm test`
+- Both hosts and guests must be connected to the same local network for optimal performance
+- Camera and microphone permissions are required
+- For best results, use Chrome, Firefox, or Edge browsers
+- The WebRTC technology works best over local networks; performance over the internet may vary
+## Using Instacast
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### As a Host
+1. Click "Start as Host" on the homepage
+2. Grant camera and microphone permissions when prompted
+3. Wait for guests to connect (they will appear in the guests list)
+4. Use the mute controls to manage audio for each guest
+5. Click "Start Recording" when ready to begin
+6. Click "Stop Recording" when finished to download the audio file
 
-### `npm run build`
+### As a Guest
+1. Click "Join as Guest" on the homepage
+2. Grant microphone permissions when prompted
+3. Select a host from the available hosts list (or enter a host ID manually)
+4. Click "Join" to connect to the host
+5. Use the mute button to control your microphone
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Netlify Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This app is designed to be deployed on Netlify:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm run build
+```
 
-### `npm run eject`
+This builds the app for production to the `build` folder.\
+Upload the contents of the `build` folder to Netlify, or use the Netlify CLI for deployment:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install -g netlify-cli
+netlify deploy
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Local Network Considerations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Note that when deployed to a public URL, users must be on the same local network for optimal peer-to-peer connectivity.\
+## Dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- react
+- react-dom
+- react-router-dom
+- peerjs
 
-## Learn More
+## Limitations and Future Improvements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Currently supports WebRTC-compatible browsers only
+- Limited error recovery for dropped connections
+- Future versions could add:
+  - Persistent recording storage
+  - Text chat between participants
+  - Connection via internet (not just LAN)
+  - Multiple audio tracks for post-processing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Architecture
 
-### Code Splitting
+The app follows a clean, modular React architecture:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **components/**: UI components (Home, Host, Guest)
+- **contexts/**: React contexts for state management
+- **hooks/**: Custom React hooks (useMedia)
+- **utils/**: Utility functions and classes (recording)
 
-### Analyzing the Bundle Size
+## Browser Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Instacast requires browsers with support for:
+- WebRTC (RTCPeerConnection)
+- MediaDevices API
+- MediaRecorder API
+- AudioContext
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT

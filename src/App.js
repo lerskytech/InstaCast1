@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { PeerProvider } from './contexts/Instacast2';
+import Home from './components/Home/Home';
+import Host from './components/Host/Host';
+import Guest from './components/Guest/Guest';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <PeerProvider>
+        <div className="App">
+          <Routes>
+            <Route path="/host" element={<Host />} />
+            <Route path="/guest" element={<Guest />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </PeerProvider>
+    </Router>
   );
 }
 
