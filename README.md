@@ -1,3 +1,4 @@
+
 # Instacast - Peer-to-Peer Podcast Recording App
 
 Instacast is a cross-platform, peer-to-peer podcast recording application built with React. The app allows podcast hosts to record high-quality audio from multiple guests connected over a local network without the need for server infrastructure.
@@ -110,3 +111,7 @@ Instacast requires browsers with support for:
 ## License
 
 MIT
+
+## GitHub Repository
+
+The source code is available on GitHub at: [lerskytech/InstaCast1](https://github.com/lerskytech/InstaCast1)
