@@ -7,7 +7,7 @@ const QRCode = ({ value, size = 200, includeMargin = true }) => {
 
   useEffect(() => {
     if (!value) return;
-    
+
     const generateQR = async () => {
       try {
         if (canvasRef.current) {
@@ -17,7 +17,7 @@ const QRCode = ({ value, size = 200, includeMargin = true }) => {
             color: {
               dark: '#000000',
               light: '#ffffff',
-            }
+            },
           });
         }
       } catch (err) {

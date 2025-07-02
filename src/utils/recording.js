@@ -17,51 +17,51 @@ export class PodcastRecorder {
    */
   startRecording(stream) {
     if (!stream || this.isRecording) return false;
-    
+
     try {
       // Create media recorder
       this.mediaRecorder = new MediaRecorder(stream, {
         mimeType: this.getSupportedMimeType(),
-        audioBitsPerSecond: 128000
+        audioBitsPerSecond: 128000,
       });
-      
+
       // Clear previous chunks
       this.recordedChunks = [];
-      
+
       // Set up event handlers
-      this.mediaRecorder.ondataavailable = (event) => {
+      this.mediaRecorder.ondataavailable = event => {
         if (event.data && event.data.size > 0) {
           this.recordedChunks.push(event.data);
-          
+
           if (this.onDataAvailableCallback) {
             this.onDataAvailableCallback(event.data);
           }
         }
       };
-      
+
       this.mediaRecorder.onstop = () => {
-        const recordingBlob = new Blob(this.recordedChunks, { 
-          type: this.getSupportedMimeType() 
+        const recordingBlob = new Blob(this.recordedChunks, {
+          type: this.getSupportedMimeType(),
         });
-        
+
         if (this.onStopCallback) {
           this.onStopCallback(recordingBlob);
         }
-        
+
         this.isRecording = false;
       };
-      
+
       // Start recording
       this.mediaRecorder.start(1000); // Capture in 1-second chunks
       this.isRecording = true;
-      
+
       return true;
     } catch (error) {
       console.error('Error starting recording:', error);
       return false;
     }
   }
-  
+
   /**
    * Stop current recording
    * @returns {Blob|null} - Recording blob or null if no recording
@@ -70,15 +70,15 @@ export class PodcastRecorder {
     if (!this.isRecording || !this.mediaRecorder) {
       return null;
     }
-    
+
     this.mediaRecorder.stop();
-    return new Promise((resolve) => {
-      this.onStopCallback = (blob) => {
+    return new Promise(resolve => {
+      this.onStopCallback = blob => {
         resolve(blob);
       };
     });
   }
-  
+
   /**
    * Check if recording is in progress
    * @returns {boolean} - Recording status
@@ -86,7 +86,7 @@ export class PodcastRecorder {
   isCurrentlyRecording() {
     return this.isRecording;
   }
-  
+
   /**
    * Set callback for when new data is available
    * @param {Function} callback - Function to call with new data
@@ -94,7 +94,7 @@ export class PodcastRecorder {
   onDataAvailable(callback) {
     this.onDataAvailableCallback = callback;
   }
-  
+
   /**
    * Set callback for when recording stops
    * @param {Function} callback - Function to call with final blob
@@ -102,29 +102,24 @@ export class PodcastRecorder {
   onStop(callback) {
     this.onStopCallback = callback;
   }
-  
+
   /**
    * Get supported mime type for recording
    * @returns {string} - Supported mime type
    */
   getSupportedMimeType() {
-    const types = [
-      'audio/webm',
-      'audio/mp4',
-      'audio/ogg',
-      'audio/wav'
-    ];
-    
+    const types = ['audio/webm', 'audio/mp4', 'audio/ogg', 'audio/wav'];
+
     for (const type of types) {
       if (MediaRecorder.isTypeSupported(type)) {
         return type;
       }
     }
-    
+
     // Fallback
     return 'audio/webm';
   }
-  
+
   /**
    * Create a downloadable link for the recording
    * @param {Blob} blob - Recording blob
@@ -146,7 +141,7 @@ export class PodcastRecorder {
           document.body.removeChild(a);
           window.URL.revokeObjectURL(url);
         }, 100);
-      }
+      },
     };
   }
 }

@@ -142,7 +142,9 @@ header h1 {
   cursor: pointer;
   font-weight: bold;
   font-size: 0.9rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .share-button:hover {
@@ -298,7 +300,9 @@ header h1 {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   margin-left: 12px;
 }
 
@@ -360,16 +364,16 @@ header h1 {
     flex-direction: row;
     gap: 1rem;
   }
-  
+
   .video-preview {
     flex: 1;
     height: 100%;
   }
-  
+
   .guests-section {
     flex: 1;
   }
-  
+
   .record-options {
     flex-direction: row;
   }

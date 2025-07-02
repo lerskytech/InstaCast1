@@ -40,7 +40,9 @@ header h1 {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .action-button:hover {
@@ -120,7 +122,7 @@ footer {
     flex-direction: row;
     justify-content: center;
   }
-  
+
   .action-button {
     flex: 1;
     max-width: 250px;
